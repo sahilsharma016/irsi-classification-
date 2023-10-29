@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" type="icon" href="static/images/me.jpg">
+    <title>Iris Classifier</title>
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Iris Classifier </h1>
+        
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="sepal_length">Sepal Length:</label>
+                <input type="text" name="sepal_length" id="sepal_length" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="sepal_width">Sepal Width:</label>
+                <input type="text" name="sepal_width" id="sepal_width" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="petal_length">Petal Length:</label>
+                <input type="text" name="petal_length" id="petal_length" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="petal_width">Petal Width:</label>
+                <input type="text" name="petal_width" id="petal_width" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+        <p class="mt-3">
+            {% if prediction is defined %}
+                The predicted class is {{ prediction }}
+                <br>
+                
+            {% endif %}
+        </p>
+        {% if image_path is defined %}
+            <img src="{{ image_path }}" alt="{{ prediction }}" class="img-fluid">
+        {% endif %}
+    </div>
+    <footer class="text-center mt-3">
+        Sahil Sharma
+    </footer>
+</body>
+</html>
